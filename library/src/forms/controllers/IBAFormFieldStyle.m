@@ -30,7 +30,7 @@
 @synthesize valueTextAlignment = valueTextAlignment_;
 @synthesize valueAutoresizingMask = valueAutoresizingMask_;
 @synthesize activeColor = activeColor_;
-
+@synthesize accessoryType = accessoryType_;
 - (void)dealloc {
 	IBA_RELEASE_SAFELY(labelTextColor_);
 	IBA_RELEASE_SAFELY(labelBackgroundColor_);
@@ -63,6 +63,7 @@
 		self.valueAutoresizingMask = UIViewAutoresizingFlexibleWidth;
 
 		self.activeColor = IBAFormFieldActiveColor;
+	self.accessoryType=UITableViewCellAccessoryNone;
 	}
 	
 	return self;

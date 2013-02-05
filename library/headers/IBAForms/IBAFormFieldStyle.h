@@ -30,6 +30,8 @@
 	UIViewAutoresizing valueAutoresizingMask_;
 
 	UIColor *activeColor_;
+  
+  UITableViewCellAccessoryType accessoryType_;
 }
 
 @property (nonatomic, retain) UIColor *labelTextColor;
@@ -47,5 +49,6 @@
 @property (nonatomic, assign) UIViewAutoresizing valueAutoresizingMask;
 
 @property (nonatomic, retain) UIColor *activeColor;
+@property (nonatomic, assign) UITableViewCellAccessoryType accessoryType;
 
 @end
