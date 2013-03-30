@@ -56,6 +56,12 @@
 	return [self initWithHeaderTitle:nil footerTitle:nil];
 }
 
+- (NSArray*) visibleFormFields {
+  NSPredicate* p = [NSPredicate predicateWithFormat:@"hidden=NO"];
+  return [self.formFields filteredArrayUsingPredicate:p];
+}
+
+
 - (void)addFormField:(IBAFormField *)newFormField {
 	if (self.formFieldStyle && nil == newFormField.formFieldStyle) {
 		newFormField.formFieldStyle = self.formFieldStyle;

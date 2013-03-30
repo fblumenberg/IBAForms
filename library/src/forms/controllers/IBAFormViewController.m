@@ -58,7 +58,8 @@
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil formDataSource:(IBAFormDataSource *)formDataSource {
 	if ((self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil])) {
-		self.formDataSource = formDataSource;		
+		self.formDataSource = formDataSource;
+    self.formDataSource.delegate = self;
 	}
 
 	return self;
@@ -282,6 +283,19 @@
 	}
 }
 
+#pragma mark -
+
+- (void)formField:(IBAFormField *)formField changedHidden:(BOOL)hidden forIndexPath:(NSIndexPath*)indexPath {
+	
+	if(indexPath){
+		if(hidden)
+			[self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+		else
+			[self.tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+	}
+	else
+		[self.tableView reloadData];
+}
 
 #pragma mark -
 #pragma mark Push view controller requests

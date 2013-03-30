@@ -58,7 +58,7 @@
 
 - (NSInteger)numberOfFormFieldsInSection:(NSInteger)sectionLocation {
 	IBAFormSection *section = [self.sections objectAtIndex:sectionLocation];
-	return (section != nil) ? [section.formFields count] : 0;
+	return (section != nil) ? [[section visibleFormFields] count] : 0;
 }
 
 - (UITableViewCell *)cellForFormFieldAtIndexPath:(NSIndexPath *)indexPath {
@@ -71,7 +71,7 @@
 
 - (IBAFormField *)formFieldAtIndexPath:(NSIndexPath *)indexPath {
 	IBAFormSection *section = [self.sections objectAtIndex:indexPath.section];
-	return [section.formFields objectAtIndex:indexPath.row];
+	return [[section visibleFormFields] objectAtIndex:indexPath.row];
 }
 
 
@@ -81,7 +81,7 @@
 	NSUInteger sectionCount = [self sectionCount];
 	for (NSUInteger sectionIndex = 0; sectionIndex < sectionCount; sectionIndex++) {
 		IBAFormSection *section = [self.sections objectAtIndex:sectionIndex];
-		NSUInteger fieldLocation = [section.formFields indexOfObject:formField];
+		NSUInteger fieldLocation = [[section visibleFormFields] indexOfObject:formField];
 		if (fieldLocation != NSNotFound) {
 			indexPath = [NSIndexPath indexPathForRow:fieldLocation inSection:sectionIndex];
 		}
@@ -90,6 +90,37 @@
 	return indexPath;
 }
 
+- (IBAFormField*)formFieldForKeyPath:(NSString *)keyPath {
+	NSUInteger sectionCount = [self sectionCount];
+	for (NSUInteger sectionIndex = 0; sectionIndex < sectionCount; sectionIndex++) {
+		IBAFormSection *section = [self.sections objectAtIndex:sectionIndex];
+		
+    NSUInteger fieldLocation = [section.formFields indexOfObjectPassingTest:^(IBAFormField* obj, NSUInteger idx, BOOL *stop){
+      return [obj.keyPath isEqualToString:keyPath];
+    }];
+    
+		if (fieldLocation != NSNotFound) {
+      return [section.formFields objectAtIndex:fieldLocation];
+    }
+  }
+  return nil;
+}
+
+
+-(void)setFormField:(IBAFormField*)formField hidden:(BOOL)hidden{
+  
+  BOOL changed = (formField.hidden != hidden);
+  if(changed){
+    NSIndexPath* indexPath = [self indexPathForFormField:formField];
+    formField.hidden = hidden;
+    if(!hidden){
+      indexPath = [self indexPathForFormField:formField];
+    }
+    
+//    if([self.delegate respondsToSelector:@selector(formField:changedHidden:forIndexPath:)])
+      [self.delegate formField:formField changedHidden:hidden forIndexPath:indexPath];
+  }
+}
 
 // This method returns the next logical form field after the one provided. That may be the first field in the next 
 // section if the given field is the last in its section.
@@ -188,6 +219,7 @@
 - (NSString *)tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)section {
 	return [[self.sections objectAtIndex:section] footerTitle];
 }
+
 
 
 #pragma mark -

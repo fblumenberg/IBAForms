@@ -36,6 +36,7 @@
 @property (nonatomic, assign) id<IBAFormFieldDelegate> delegate;
 @property (nonatomic, retain) IBAFormFieldStyle *formFieldStyle;
 @property (nonatomic, assign, getter=isNullable) BOOL nullable;
+@property (nonatomic, assign, getter=isHidden) BOOL hidden;
 @property (nonatomic, retain) NSValueTransformer *valueTransformer;
 
 

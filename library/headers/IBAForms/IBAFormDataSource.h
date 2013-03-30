@@ -16,6 +16,8 @@
 #import "IBAFormSection.h"
 #import "IBAFormFieldStyle.h"
 
+@protocol IBAFormDataSourceDelegate;
+
 @interface IBAFormDataSource : NSObject <UITableViewDataSource, IBAFormModelManager> {
 	NSString *name_;
 	id model_; // the underlying object this datasource represents
@@ -23,6 +25,7 @@
 	IBAFormFieldStyle *formFieldStyle_;
 }
 
+@property (nonatomic, assign) id<IBAFormDataSourceDelegate> delegate;
 @property (nonatomic, copy) NSString *name;
 @property (nonatomic, copy) NSMutableArray *sections;
 @property (nonatomic, retain, readonly) id model;
@@ -46,5 +49,14 @@
 - (IBAFormField *)formFieldAfter:(IBAFormField *)field;
 - (IBAFormField *)formFieldBefore:(IBAFormField *)field;
 - (NSIndexPath *)indexPathForFormField:(IBAFormField *)formField;
+- (IBAFormField*)formFieldForKeyPath:(NSString *)keyPath;
+
+-(void)setFormField:(IBAFormField*)formField hidden:(BOOL)hidden;
+
+@end
+
+@protocol IBAFormDataSourceDelegate <NSObject>
+
+- (void)formField:(IBAFormField *)formField changedHidden:(BOOL)value forIndexPath:(NSIndexPath*)indexPath;
 
 @end
