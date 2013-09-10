@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>C3F4BE3C-5DAD-4231-8296-A39AD973CE62</string>
+	<key>IDESourceControlProjectName</key>
+	<string>IBAForms</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>E97AB9DA-699A-41BC-B155-DA0DC057C23D</key>
+		<string>https://github.com/fblumenberg/IBAForms</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>IBAForms.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>E97AB9DA-699A-41BC-B155-DA0DC057C23D</key>
+		<string>..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/fblumenberg/IBAForms</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>E97AB9DA-699A-41BC-B155-DA0DC057C23D</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>E97AB9DA-699A-41BC-B155-DA0DC057C23D</string>
+			<key>IDESourceControlWCCName</key>
+			<string>IBAForms</string>
+		</dict>
+	</array>
+</dict>
+</plist>
