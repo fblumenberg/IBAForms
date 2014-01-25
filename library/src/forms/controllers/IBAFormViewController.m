@@ -97,6 +97,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    if ([self respondsToSelector:@selector(edgesForExtendedLayout)])
+        self.edgesForExtendedLayout = UIRectEdgeNone;
+    
 
 	self.tableView.dataSource = self.formDataSource;
 	self.tableView.delegate = self;
