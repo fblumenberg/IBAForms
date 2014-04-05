@@ -15,12 +15,11 @@
 #import "IBAInputNavigationToolbar.h"
 #import "IBACommon.h"
 
-#define IBAInputNavigationToolbarNextTitle @"Next"
-#define IBAInputNavigationToolbarPreviousTitle @"Previous"
+#define IBAInputNavigationToolbarNextTitle NSLocalizedString(@"Next", @"IBAInputNavigationToolbarNextTitle")
+#define IBAInputNavigationToolbarPreviousTitle NSLocalizedString(@"Previous", @"IBAInputNavigationToolbarPreviousTitle")
 
 @interface IBAInputNavigationToolbar ()
-@property (nonatomic, retain) UIBarButtonItem *nextPreviousBarButtonItem;
-- (void)updateButtons;
+@property (nonatomic, strong) UIBarButtonItem *nextPreviousBarButtonItem;
 @end
 
 @implementation IBAInputNavigationToolbar
@@ -30,16 +29,6 @@
 @synthesize nextPreviousBarButtonItem = nextPreviousBarButtonItem_;
 @synthesize displayDoneButton = displayDoneButton_;
 @synthesize displayNextPreviousButton = displayNextPreviousButton_;
-
-
-- (void)dealloc {
-	IBA_RELEASE_SAFELY(doneButton_);
-	IBA_RELEASE_SAFELY(nextPreviousButton_);
-	IBA_RELEASE_SAFELY(nextPreviousBarButtonItem_);
-	
-	[super dealloc];
-}
-
 
 - (id)initWithFrame:(CGRect)aRect {
 	if ((self = [super initWithFrame:(CGRect)aRect])) {
