@@ -53,9 +53,7 @@
 - (void)dealloc {
   IBA_RELEASE_SAFELY(_stepperCell);
   
-  self.displayValueTransformer = nil;
   
-  [super dealloc];
 }
 
 - (id)initWithKeyPath:(NSString *)keyPath title:(NSString *)title valueTransformer:(NSValueTransformer *)valueTransformer {

@@ -49,7 +49,6 @@
 	[self releaseViews];
 	IBA_RELEASE_SAFELY(formDataSource_);
 
-	[super dealloc];
 }
 
 - (void)releaseViews {
@@ -158,7 +157,7 @@
 - (void)setFormDataSource:(IBAFormDataSource *)dataSource {
 	if (dataSource != formDataSource_) {
 		IBAFormDataSource *oldDataSource = formDataSource_;
-		formDataSource_ = [dataSource retain];
+		formDataSource_ = dataSource;
 		IBA_RELEASE_SAFELY(oldDataSource);
 
 		self.tableView.dataSource = formDataSource_;
@@ -298,6 +297,10 @@
 			[self.tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
 	}
 	else
+		[self.tableView reloadData];
+}
+
+- (void)formField:(IBAFormField *)formField updateForIndexPath:(NSIndexPath*)indexPath{
 		[self.tableView reloadData];
 }
 

@@ -18,7 +18,7 @@
 	UIStepper *stepperControlUI_;
 }
 
-@property (nonatomic, retain) UIControl* stepperControl;
-@property (nonatomic, retain) UILabel *valueLabel;
+@property (nonatomic, strong) UIControl* stepperControl;
+@property (nonatomic, strong) UILabel *valueLabel;
 
 @end

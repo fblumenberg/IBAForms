@@ -25,7 +25,7 @@
 - (id)initWithKeyPath:(NSString *)keyPath title:(NSString *)title;
 - (id)initWithKeyPath:(NSString *)keyPath title:(NSString *)title valueTransformer:(NSValueTransformer *)valueTransformer;
 
-@property(nonatomic,retain) NSValueTransformer *displayValueTransformer;
+@property(nonatomic,strong) NSValueTransformer *displayValueTransformer;
 
 @property(nonatomic) double value;                        // default is 0. sends UIControlEventValueChanged. clamped to min/max
 @property(nonatomic) double minimumValue;                 // default 0. must be less than maximumValue

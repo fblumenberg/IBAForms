@@ -41,7 +41,6 @@
 	IBA_RELEASE_SAFELY(pickerView_);
 	IBA_RELEASE_SAFELY(providerView_);
 
-	[super dealloc];
 }
 
 - (id)init {
@@ -65,7 +64,7 @@
 
 
 - (void)setInputRequestor:(id<IBAInputRequestor>)inputRequestor {
-	inputRequestor_ = inputRequestor;
+	self.inputRequestor = inputRequestor;
 	
 	if (inputRequestor != nil) {
 		[self.pickerView reloadAllComponents];
@@ -114,7 +113,7 @@
 	if ((view != nil) && ([view isKindOfClass:[UILabel class]])){
 		label = (UILabel *)view;
 	} else {
-		label = [[[UILabel alloc] initWithFrame:CGRectMake(0, 0, pickerView.bounds.size.width - 40, 44)] autorelease];
+		label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, pickerView.bounds.size.width - 40, 44)];
 		label.backgroundColor = [UIColor clearColor];
 		label.shadowColor = [UIColor whiteColor];
 		label.shadowOffset = CGSizeMake(0, 1);

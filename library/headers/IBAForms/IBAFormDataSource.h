@@ -25,11 +25,11 @@
 	IBAFormFieldStyle *formFieldStyle_;
 }
 
-@property (nonatomic, assign) id<IBAFormDataSourceDelegate> delegate;
+@property (nonatomic, weak) id<IBAFormDataSourceDelegate> delegate;
 @property (nonatomic, copy) NSString *name;
 @property (nonatomic, copy) NSMutableArray *sections;
-@property (nonatomic, retain, readonly) id model;
-@property (nonatomic, retain) IBAFormFieldStyle *formFieldStyle;
+@property (nonatomic, strong, readonly) id model;
+@property (nonatomic, strong) IBAFormFieldStyle *formFieldStyle;
 
 - (id)initWithModel:(id)model;
 
@@ -52,11 +52,14 @@
 - (IBAFormField*)formFieldForKeyPath:(NSString *)keyPath;
 
 -(void)setFormField:(IBAFormField*)formField hidden:(BOOL)hidden;
+-(void)updateFormFieldForKeyPath:(NSString*)keyPath;
+-(void)updateFormField:(IBAFormField*)formField;
 
 @end
 
 @protocol IBAFormDataSourceDelegate <NSObject>
 
 - (void)formField:(IBAFormField *)formField changedHidden:(BOOL)value forIndexPath:(NSIndexPath*)indexPath;
+- (void)formField:(IBAFormField *)formField updateForIndexPath:(NSIndexPath*)indexPath;
 
 @end

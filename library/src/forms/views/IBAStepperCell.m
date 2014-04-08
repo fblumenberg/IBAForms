@@ -25,7 +25,6 @@
 	IBA_RELEASE_SAFELY(stepperControlUI_);
 	IBA_RELEASE_SAFELY(_valueLabel);
   
-	[super dealloc];
 }
 
 -(id)initWithFormFieldStyle:(IBAFormFieldStyle *)style reuseIdentifier:(NSString *)reuseIdentifier

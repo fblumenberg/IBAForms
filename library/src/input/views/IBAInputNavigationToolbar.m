@@ -80,7 +80,7 @@
 		[barItems addObject:doneButton_];
 	}
 	
-	[barItems addObject:[[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil] autorelease]];
+	[barItems addObject:[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil]];
 
 	if (self.displayNextPreviousButton) {
 		[barItems addObject:nextPreviousBarButtonItem_];

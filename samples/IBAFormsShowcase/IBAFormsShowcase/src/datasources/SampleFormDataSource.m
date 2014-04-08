@@ -17,18 +17,26 @@
 #import "StringToNumberTransformer.h"
 #import "ShowcaseButtonStyle.h"
 
-@implementation SampleFormDataSource
+@implementation SampleFormDataSource{
+    IBAFormField* test;
+}
 
 - (id)initWithModel:(id)aModel {
 	if (self = [super initWithModel:aModel]) {
 		// Some basic form fields that accept text input
 		IBAFormSection *basicFieldSection = [self addSectionWithHeaderTitle:@"Basic Form Fields" footerTitle:nil];
 
-		[basicFieldSection addFormField:[[[IBATextFormField alloc] initWithKeyPath:@"text" title:@"Text"] autorelease]];
-		[IBATextFormField passwordTextFormFieldWithSection:basicFieldSection keyPath:@"password" title:@"Password" valueTransformer:nil];
-		[basicFieldSection addFormField:[[[IBABooleanFormField alloc] initWithKeyPath:@"booleanSwitchValue" title:@"Switch"] autorelease]];
-		[basicFieldSection addFormField:[[[IBABooleanFormField alloc] initWithKeyPath:@"booleanCheckValue" title:@"Check" type:IBABooleanFormFieldTypeCheck] autorelease]];
-		
+//		[basicFieldSection addFormField:[[[IBATextFormField alloc] initWithKeyPath:@"text" title:@"Text"] autorelease]];
+        
+        test=[[IBAReadOnlyTextFormField alloc] initWithKeyPath:@"readOnlyText" title:@"Read Only"];
+		[basicFieldSection addFormField:test];
+ 
+//		[IBATextFormField passwordTextFormFieldWithSection:basicFieldSection keyPath:@"password" title:@"Password" valueTransformer:nil];
+		[basicFieldSection addFormField:[[IBABooleanFormField alloc] initWithKeyPath:@"booleanSwitchValue" title:@"Switch"]];
+//		[basicFieldSection addFormField:[[[IBABooleanFormField alloc] initWithKeyPath:@"booleanCheckValue" title:@"Check" type:IBABooleanFormFieldTypeCheck] autorelease]];
+        // IBAReadOnlyTextFormField displays the value the field is bound in a read-only text view. The title is displayed as the field's label.
+        
+/*
 		// Styled form fields
 		IBAFormSection *styledFieldSection = [self addSectionWithHeaderTitle:@"Styled Fields" footerTitle:nil];
 
@@ -128,13 +136,13 @@
 		IBAFormSection *readonlyFieldSection = [self addSectionWithHeaderTitle:@"Read-Only Fields" footerTitle:nil];
 		
         // IBAReadOnlyTextFormField displays the value the field is bound in a read-only text view. The title is displayed as the field's label.
-		[readonlyFieldSection addFormField:[[[IBAReadOnlyTextFormField alloc] initWithKeyPath:@"readOnlyText" title:@"Read Only"] autorelease]];
+		[readonlyFieldSection addFormField:[[[IBAReadOnlyTextFormField alloc] initWithKeyPath:@"readOnlyText1" title:@"Read Only"] autorelease]];
 		
         // IBATitleFormField displays the provided title in the field's label. No value is displayed for the field.
 		[readonlyFieldSection addFormField:[[[IBATitleFormField alloc] initWithTitle:@"A title"] autorelease]];
         
 		// IBALabelFormField displays the value the field is bound to as the field's label.
-		IBALabelFormField *labelField = [[[IBALabelFormField alloc] initWithKeyPath:@"readOnlyText"] autorelease];
+		IBALabelFormField *labelField = [[[IBALabelFormField alloc] initWithKeyPath:@"readOnlyText1"] autorelease];
 		labelField.formFieldStyle = readonlyFieldStyle;
 		[readonlyFieldSection addFormField:labelField];
 
@@ -157,6 +165,8 @@
 																	 [[UIApplication sharedApplication]
 																	  openURL:[NSURL URLWithString:@"mailto:info@google.com"]];
 																 }] autorelease]];
+ 
+ */
 
     }
 
@@ -166,7 +176,17 @@
 - (void)setModelValue:(id)value forKeyPath:(NSString *)keyPath {
 	[super setModelValue:value forKeyPath:keyPath];
 	
-	NSLog(@"%@", [self.model description]);
+	NSLog(@"%@:%@", keyPath,[self.model description]);
+    if([keyPath isEqualToString:@"booleanSwitchValue"]){
+//        [self setModelValue:[NSString stringWithFormat:@"TEST-%@",value] forKeyPath:@"text"];
+//
+//        
+//
+        [self setModelValue:[NSString stringWithFormat:@"RO.TEST-%@",value] forKeyPath:@"readOnlyText"];
+        NSLog(@"Now update %@",test);
+        [self updateFormField:test];
+//        [self setFormField:test hidden:[value boolValue] ];
+     }
 }
 
 @end

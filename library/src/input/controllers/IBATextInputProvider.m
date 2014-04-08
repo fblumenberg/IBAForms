@@ -15,9 +15,11 @@
 #import "IBATextInputProvider.h"
 #import "IBACommon.h"
 
-@implementation IBATextInputProvider
+@implementation IBATextInputProvider{
+    id<IBAInputRequestor> __weak inputRequestor_;
+}
 
-@synthesize inputRequestor = inputRequestor_;
+@synthesize inputRequestor=inputRequestor_;
 
 - (UIView *)view {
 	return nil;
