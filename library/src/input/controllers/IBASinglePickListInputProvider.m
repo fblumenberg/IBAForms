@@ -64,7 +64,7 @@
 
 
 - (void)setInputRequestor:(id<IBAInputRequestor>)inputRequestor {
-	self.inputRequestor = inputRequestor;
+    inputRequestor_ = inputRequestor;
 	
 	if (inputRequestor != nil) {
 		[self.pickerView reloadAllComponents];

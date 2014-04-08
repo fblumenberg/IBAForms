@@ -8,6 +8,7 @@ Pod::Spec.new do |s|
   s.version = '1.1.0.fb.3'
   s.homepage = 'https://github.com/ittybittydude/IBAForms'
   s.name = 'IBAForms'
+  s.requires_arc = true
   s.platform = :ios
   s.framework = 'CoreData'
 end

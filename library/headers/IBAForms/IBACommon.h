@@ -15,6 +15,7 @@
 #import <Foundation/Foundation.h>
 
 #if !__has_feature(objc_arc)
+#error ARC not enabled!
 #define IBA_RELEASE_SAFELY(__POINTER) { [__POINTER release]; __POINTER = nil; }
 #else
 #define IBA_RELEASE_SAFELY(__POINTER) { __POINTER = nil; }
