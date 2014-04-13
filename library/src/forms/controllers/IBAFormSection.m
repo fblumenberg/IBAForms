@@ -61,12 +61,13 @@
 }
 
 
-- (void)addFormField:(IBAFormField *)newFormField {
+- (IBAFormField *)addFormField:(IBAFormField *)newFormField {
 	if (self.formFieldStyle && nil == newFormField.formFieldStyle) {
 		newFormField.formFieldStyle = self.formFieldStyle;
 	}
 	newFormField.modelManager = self.modelManager;
 	[self.formFields addObject:newFormField];
+    return newFormField;
 }
 
 @end

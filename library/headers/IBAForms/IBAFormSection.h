@@ -35,6 +35,6 @@
 
 - (id)initWithHeaderTitle:(NSString *)header footerTitle:(NSString *)footer;
 
-- (void)addFormField:(IBAFormField *)formField;
+- (IBAFormField *)addFormField:(IBAFormField *)formField;
 - (NSArray*) visibleFormFields;
 @end

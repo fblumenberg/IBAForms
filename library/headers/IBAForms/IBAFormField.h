@@ -17,45 +17,53 @@
 #import "IBAFormModelManager.h"
 #import "IBACommon.h"
 
+
 @protocol IBAFormFieldDelegate;
 
 @interface IBAFormField : NSObject {
-	NSString *keyPath_;
-	NSString *title_;
-	id<IBAFormModelManager> __weak modelManager_;
-	id<IBAFormFieldDelegate> __weak delegate_;
-	IBAFormFieldStyle *formFieldStyle_;
-	BOOL nullable_;
-	NSValueTransformer *valueTransformer_;
+    NSString *keyPath_;
+    NSString *title_;
+    id <IBAFormModelManager> __weak modelManager_;
+    id <IBAFormFieldDelegate> __weak delegate_;
+    IBAFormFieldStyle *formFieldStyle_;
+    BOOL nullable_;
+    NSValueTransformer *valueTransformer_;
 }
 
-@property (nonatomic, copy) NSString *keyPath;
-@property (nonatomic, copy) NSString *title;
-@property (weak, nonatomic, readonly) IBAFormFieldCell *cell;
-@property (nonatomic, weak) id<IBAFormModelManager> modelManager;
-@property (nonatomic, weak) id<IBAFormFieldDelegate> delegate;
-@property (nonatomic, strong) IBAFormFieldStyle *formFieldStyle;
-@property (nonatomic, assign, getter=isNullable) BOOL nullable;
-@property (nonatomic, assign, getter=isHidden) BOOL hidden;
-@property (nonatomic, strong) NSValueTransformer *valueTransformer;
+@property(nonatomic, copy) NSString *keyPath;
+@property(nonatomic, copy) NSString *title;
+@property(weak, nonatomic, readonly) IBAFormFieldCell *cell;
+@property(nonatomic, weak) id <IBAFormModelManager> modelManager;
+@property(nonatomic, weak) id <IBAFormFieldDelegate> delegate;
+@property(nonatomic, strong) IBAFormFieldStyle *formFieldStyle;
+@property(nonatomic, assign, getter=isNullable) BOOL nullable;
+@property(nonatomic, assign, getter=isHidden) BOOL hidden;
+@property(nonatomic, strong) NSValueTransformer *valueTransformer;
+
 
 
 - (id)initWithKeyPath:(NSString *)keyPath title:(NSString *)title valueTransformer:(NSValueTransformer *)valueTransformer;
+
 - (id)initWithKeyPath:(NSString *)keyPath title:(NSString *)title;
-- (id)initWithKeyPath:(NSString*)keyPath;
-- (id)initWithTitle:(NSString*)title;
+
+- (id)initWithKeyPath:(NSString *)keyPath;
+
+- (id)initWithTitle:(NSString *)title;
 
 - (void)updateCellContents;
 
 #pragma mark -
 #pragma mark Detail View Controller management
 - (BOOL)hasDetailViewController;
+
 - (UIViewController *)detailViewController;
 
 #pragma mark -
 #pragma mark Getting and setting the form field value
 - (id)formFieldValue;
+
 - (NSString *)formFieldStringValue;
+
 - (BOOL)setFormFieldValue:(id)formVieldValue;
 
 #pragma mark -
@@ -68,5 +76,8 @@
 @protocol IBAFormFieldDelegate <NSObject>
 @optional
 - (BOOL)formField:(IBAFormField *)formField willSetValue:(id)value;
+
 - (void)formField:(IBAFormField *)formField didSetValue:(id)value;
 @end
+
+

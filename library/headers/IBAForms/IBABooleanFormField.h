@@ -20,7 +20,6 @@ typedef enum {
 	IBABooleanFormFieldTypeCheck,
 } IBABooleanFormFieldType;
 
-
 @interface IBABooleanFormField : IBAFormField {
 	IBABooleanSwitchCell *switchCell_;
 	IBAFormFieldCell *checkCell_;

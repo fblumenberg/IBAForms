@@ -19,20 +19,15 @@
 @implementation IBATitleFormField
 
 - (IBAFormFieldCell *)cell {
-	if (cell_ == nil) {
-		cell_ = [[IBALabelFormCell alloc] initWithFormFieldStyle:self.formFieldStyle reuseIdentifier:@"Cell"];
-	}
-	
-	return cell_;
-}
+    if (cell_ == nil) {
+        cell_ = [[IBALabelFormCell alloc] initWithFormFieldStyle:self.formFieldStyle reuseIdentifier:@"Cell"];
+    }
 
-- (void)dealloc {
-	IBA_RELEASE_SAFELY(cell_);
-	
+    return cell_;
 }
 
 - (void)updateCellContents {
-	self.cell.label.text = self.title;
+    self.cell.label.text = self.title;
 }
 
 @end

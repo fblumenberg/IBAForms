@@ -53,6 +53,11 @@
 		self.label.autoresizingMask = style.labelAutoresizingMask;
 		self.label.adjustsFontSizeToFitWidth = YES;
 		self.label.minimumFontSize = 10;
+        self.label.numberOfLines=0;
+        
+//        self.label.layer.borderColor = [UIColor greenColor].CGColor;
+//        self.label.layer.borderWidth = 1.0;
+        
 		[self.cellView addSubview:self.label];
 
 		// set the style after the views have been created

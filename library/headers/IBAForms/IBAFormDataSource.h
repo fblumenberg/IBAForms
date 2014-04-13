@@ -52,6 +52,7 @@
 - (IBAFormField*)formFieldForKeyPath:(NSString *)keyPath;
 
 -(void)setFormField:(IBAFormField*)formField hidden:(BOOL)hidden;
+-(void)setFormFieldForKeyPath:(NSString*)keyPath hidden:(BOOL)hidden;
 -(void)updateFormFieldForKeyPath:(NSString*)keyPath;
 -(void)updateFormField:(IBAFormField*)formField;
 
@@ -61,5 +62,6 @@
 
 - (void)formField:(IBAFormField *)formField changedHidden:(BOOL)value forIndexPath:(NSIndexPath*)indexPath;
 - (void)formField:(IBAFormField *)formField updateForIndexPath:(NSIndexPath*)indexPath;
+- (void)updateSection:(NSInteger)sectionIdx animated:(BOOL)animated;
 
 @end

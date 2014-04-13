@@ -22,68 +22,59 @@
 
 @synthesize textFormFieldCell = textFormFieldCell_;
 
-- (void)dealloc {
-	IBA_RELEASE_SAFELY(textFormFieldCell_);
-	
-}
-
-
-#pragma mark -
-#pragma mark Cell management
+#pragma mark - Cell management
 
 - (IBAFormFieldCell *)cell {
-	return [self textFormFieldCell];
+    return [self textFormFieldCell];
 }
 
 
 - (IBATextFormFieldCell *)textFormFieldCell {
-	if (textFormFieldCell_ == nil) {
-		textFormFieldCell_ = [[IBATextFormFieldCell alloc] initWithFormFieldStyle:self.formFieldStyle reuseIdentifier:@"Cell"];
-		textFormFieldCell_.textField.delegate = self;
-		textFormFieldCell_.textField.enabled = NO;
-	}
-	
-	return textFormFieldCell_;
+    if (textFormFieldCell_ == nil) {
+        textFormFieldCell_ = [[IBATextFormFieldCell alloc] initWithFormFieldStyle:self.formFieldStyle reuseIdentifier:@"Cell"];
+        textFormFieldCell_.textField.delegate = self;
+        textFormFieldCell_.textField.enabled = NO;
+    }
+
+    return textFormFieldCell_;
 }
 
 - (void)updateCellContents {
-	self.textFormFieldCell.label.text = self.title;
-	self.textFormFieldCell.textField.text = [self formFieldStringValue];
+    self.textFormFieldCell.label.text = self.title;
+    self.textFormFieldCell.textField.text = [self formFieldStringValue];
 }
 
 
-#pragma mark -
-#pragma mark UITextFieldDelegate
+#pragma mark - UITextFieldDelegate
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
-	return [[IBAInputManager sharedIBAInputManager] activateNextInputRequestor];;
+    return [[IBAInputManager sharedIBAInputManager] activateNextInputRequestor];;
 }
 
 
-#pragma mark -
-#pragma mark IBAInputRequestor
+#pragma mark - IBAInputRequestor
 
 - (NSString *)dataType {
-	return IBAInputDataTypeText;
+    return IBAInputDataTypeText;
 }
 
 - (void)activate {
-	self.textFormFieldCell.textField.enabled = YES;
-	[super activate];
+    self.textFormFieldCell.textField.enabled = YES;
+    [super activate];
 }
 
 - (BOOL)deactivate {
-	BOOL deactivated = [self setFormFieldValue:self.textFormFieldCell.textField.text];
-	if (deactivated) {
-		self.textFormFieldCell.textField.enabled = NO;
-		deactivated = [super deactivate];
-	}
-	
-	return deactivated;
+    BOOL deactivated = [self setFormFieldValue:self.textFormFieldCell.textField.text];
+    if (deactivated) {
+        self.textFormFieldCell.textField.enabled = NO;
+        deactivated = [super deactivate];
+    }
+
+    return deactivated;
 }
 
 - (UIResponder *)responder {
-	return self.textFormFieldCell.textField;
+    return self.textFormFieldCell.textField;
 }
 
 @end

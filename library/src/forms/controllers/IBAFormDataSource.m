@@ -70,6 +70,9 @@
 
 - (IBAFormField *)formFieldAtIndexPath:(NSIndexPath *)indexPath {
 	IBAFormSection *section = [self.sections objectAtIndex:indexPath.section];
+    
+    NSLog(@"formFieldAtIndexPath %d %d",indexPath.section,indexPath.row);
+    
 	return [[section visibleFormFields] objectAtIndex:indexPath.row];
 }
 
@@ -114,6 +117,10 @@
     NSIndexPath *indexPath = [self indexPathForFormField:formField];
 
     [self.delegate formField:formField updateForIndexPath:indexPath];
+}
+
+-(void)setFormFieldForKeyPath:(NSString*)keyPath hidden:(BOOL)hidden{
+    [self setFormField:[self formFieldForKeyPath:keyPath] hidden:hidden];
 }
 
 - (void)setFormField:(IBAFormField *)formField hidden:(BOOL)hidden {

@@ -291,10 +291,15 @@
 - (void)formField:(IBAFormField *)formField changedHidden:(BOOL)hidden forIndexPath:(NSIndexPath*)indexPath {
 	
 	if(indexPath){
+        
+        [self.tableView beginUpdates];
 		if(hidden)
 			[self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
 		else
 			[self.tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+        [self.tableView endUpdates];
+        
+        [self.tableView performSelector:@selector(reloadData) withObject:self.tableView afterDelay:0.01];
 	}
 	else
 		[self.tableView reloadData];
@@ -303,6 +308,17 @@
 - (void)formField:(IBAFormField *)formField updateForIndexPath:(NSIndexPath*)indexPath{
 		[self.tableView reloadData];
 }
+
+- (void)updateSection:(NSInteger)sectionIdx animated:(BOOL)animated{
+    
+    if(animated){
+        [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:sectionIdx] withRowAnimation:UITableViewRowAnimationAutomatic];
+        [self.tableView performSelector:@selector(reloadData) withObject:self.tableView afterDelay:0.01];
+    }
+    else
+        [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:sectionIdx] withRowAnimation:UITableViewRowAnimationNone];
+}
+
 
 #pragma mark -
 #pragma mark Push view controller requests

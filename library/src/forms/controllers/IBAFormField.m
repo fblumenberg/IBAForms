@@ -36,6 +36,7 @@
 
 }
 
+
 - (id)initWithKeyPath:(NSString*)keyPath title:(NSString*)title valueTransformer:(NSValueTransformer *)valueTransformer {
 	if ((self = [super init])) {
 		self.keyPath = keyPath;
@@ -61,6 +62,10 @@
 
 - (id)init {
 	return [self initWithKeyPath:nil title:nil];
+}
+
+- (NSString *)description {
+    return [NSString stringWithFormat:@"[key=%@] [title = '%@']", [self keyPath], [self title]];
 }
 
 
@@ -170,3 +175,6 @@
 
 
 @end
+
+
+

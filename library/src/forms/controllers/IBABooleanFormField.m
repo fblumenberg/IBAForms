@@ -26,11 +26,7 @@
 @synthesize checkCell = checkCell_;
 @synthesize booleanFormFieldType = booleanFormFieldType_;
 
-- (void)dealloc {
-	IBA_RELEASE_SAFELY(switchCell_);
-	IBA_RELEASE_SAFELY(checkCell_);
-	
-}
+
 
 - (id)initWithKeyPath:(NSString *)keyPath title:(NSString *)title valueTransformer:(NSValueTransformer *)valueTransformer 
 				 type:(IBABooleanFormFieldType)booleanFormFieldType {
