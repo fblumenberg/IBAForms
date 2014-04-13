@@ -74,7 +74,6 @@
 		BA98BEDD16C14FC4000CA7EE /* IBAStepperFormField.h in Headers */ = {isa = PBXBuildFile; fileRef = BA98BEDB16C14FC4000CA7EE /* IBAStepperFormField.h */; };
 		BA98BEDF16C14FED000CA7EE /* IBAStepperFormField.m in Sources */ = {isa = PBXBuildFile; fileRef = BA98BEDE16C14FED000CA7EE /* IBAStepperFormField.m */; };
 		BA98BEE116C14FFD000CA7EE /* IBAStepperCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BA98BEE016C14FFD000CA7EE /* IBAStepperCell.m */; };
-		BADDDB5C18F98D9700660606 /* IBAFormFieldBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = BADDDB5B18F98D9700660606 /* IBAFormFieldBuilder.h */; };
 		BADDDB5E18F9A0A200660606 /* IBAFormField+Builder.m in Sources */ = {isa = PBXBuildFile; fileRef = BADDDB5D18F9A0A200660606 /* IBAFormField+Builder.m */; };
 		F43DFFA46559E800395042F3 /* IBAFormField+Builder.h in Headers */ = {isa = PBXBuildFile; fileRef = F43DFED44D417DFFFC391587 /* IBAFormField+Builder.h */; };
 /* End PBXBuildFile section */
@@ -147,7 +146,6 @@
 		BA98BEDB16C14FC4000CA7EE /* IBAStepperFormField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBAStepperFormField.h; sourceTree = "<group>"; };
 		BA98BEDE16C14FED000CA7EE /* IBAStepperFormField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBAStepperFormField.m; sourceTree = "<group>"; };
 		BA98BEE016C14FFD000CA7EE /* IBAStepperCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBAStepperCell.m; sourceTree = "<group>"; };
-		BADDDB5B18F98D9700660606 /* IBAFormFieldBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBAFormFieldBuilder.h; sourceTree = "<group>"; };
 		BADDDB5D18F9A0A200660606 /* IBAFormField+Builder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "IBAFormField+Builder.m"; sourceTree = "<group>"; };
 		D2AAC07E0554694100DB518D /* libIBAForms.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libIBAForms.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		F43DFED44D417DFFFC391587 /* IBAFormField+Builder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "IBAFormField+Builder.h"; sourceTree = "<group>"; };
@@ -307,7 +305,6 @@
 				751240C213A8F6CF007BF2B5 /* IBAFormDataSource.h */,
 				F43DFED44D417DFFFC391587 /* IBAFormField+Builder.h */,
 				751240C313A8F6CF007BF2B5 /* IBAFormField.h */,
-				BADDDB5B18F98D9700660606 /* IBAFormFieldBuilder.h */,
 				751240C413A8F6CF007BF2B5 /* IBAFormFieldCell.h */,
 				751240C513A8F6CF007BF2B5 /* IBAFormFieldStyle.h */,
 				751240C613A8F6CF007BF2B5 /* IBAFormModelManager.h */,
@@ -372,7 +369,6 @@
 				751240EB13A8F6CF007BF2B5 /* IBAFormSection.h in Headers */,
 				751240EC13A8F6CF007BF2B5 /* IBAFormViewController.h in Headers */,
 				751240ED13A8F6CF007BF2B5 /* IBAInputCommon.h in Headers */,
-				BADDDB5C18F98D9700660606 /* IBAFormFieldBuilder.h in Headers */,
 				751240EE13A8F6CF007BF2B5 /* IBAInputManager.h in Headers */,
 				751240EF13A8F6CF007BF2B5 /* IBAInputNavigationToolbar.h in Headers */,
 				751240F013A8F6CF007BF2B5 /* IBAInputProvider.h in Headers */,

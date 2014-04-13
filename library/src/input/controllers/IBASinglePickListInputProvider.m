@@ -150,7 +150,7 @@
 	id<IBAPickListOption> selectedPickListOption = [self.inputRequestor.inputRequestorValue anyObject];
 	if (nil != selectedPickListOption) {
 		NSInteger selectedRow = [self.pickListOptions indexOfObject:selectedPickListOption];
-		[self.pickerView selectRow:selectedRow inComponent:0 animated:YES];
+		[self.pickerView selectRow:selectedRow inComponent:0 animated:NO];
 	} else {
 		[self setSelectedOptionWithIndex:0];
 	} 
